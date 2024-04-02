@@ -4,7 +4,7 @@
         <ul>
             <template v-for="({ id, text, amount }, index) in data" :key="id">
                 <li class="list-item" :class="{ 'income': amount >= 0, 'expense': amount < 0 }">
-                    <div class="x_btn" @click="() => emit('removeTransaction', index)">x</div>
+                    <div class="x_btn" @click="emit('removeTransaction', index)">x</div>
                     {{ text }}
                     <span>{{ amount >= 0 ? '+' : '-' }}${{ Math.abs(amount) }}</span>
                 </li>

@@ -15,8 +15,9 @@
 import { ref } from 'vue'
 import 'vue-toast-notification/dist/theme-sugar.css';
 import { useToast } from 'vue-toast-notification';
+import { v4 as uuidv4 } from 'uuid';
 
-const text = ref(""), amount = ref(""), id = ref(0)
+const text = ref(""), amount = ref("")
 const instance = useToast()
 const emit = defineEmits(['newTransaction'])
 
@@ -49,8 +50,8 @@ const addTransaction = () => {
         });
     }
     else {
-        emit('newTransaction', { id: id.value++, text: text.value, amount: amount.value })
-        instance.success('Your expense  was succesfully added!', {
+        emit('newTransaction', { id: uuidv4(), text: text.value, amount: amount.value })
+        instance.success(`Your ${amount.value >= 0 ? "income of +$" : "expense of -$"}${Math.abs(amount.value)} was succesfully added!`, {
             position: "top-right"
         });
 

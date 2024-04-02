@@ -5,12 +5,13 @@
     <IncomeExpenses :income :expense />
     <TransactionList :data @removeTransaction="removeTransaction" />
     <AddTransaction @newTransaction="addTransaction" :balance />
+    <button @click="clearStorage">Clear Local Storage</button>
   </div>
 </template>
 
 <script setup>
-import { defineAsyncComponent, ref } from 'vue';
 
+import { defineAsyncComponent, ref, watchEffect, onMounted } from 'vue';
 const Header = defineAsyncComponent(() => import('./components/Header.vue'));
 const Balance = defineAsyncComponent(() => import('./components/Balance.vue'));
 const AddTransaction = defineAsyncComponent(() => import('./components/AddTransaction.vue'));
@@ -20,7 +21,23 @@ import 'vue-toast-notification/dist/theme-sugar.css';
 import { useToast } from 'vue-toast-notification';
 
 const data = ref([]), balance = ref(0), income = ref(0), expense = ref(0);
-const instance=useToast()
+const instance = useToast()
+
+watchEffect(() => {
+  if (data.value.length > 0)
+    localStorage.setItem('data', JSON.stringify({ data: data.value, balance: balance.value, income: income.value, expense: expense.value }));
+})
+
+onMounted(() => {
+  const storedData = localStorage.getItem('data');
+  if (storedData) {
+    const parsedData = JSON.parse(storedData);
+    data.value = parsedData.data || [];
+    balance.value = parsedData.balance || 0;
+    income.value = parsedData.income || 0;
+    expense.value = parsedData.expense || 0;
+  }
+})
 
 const addTransaction = (transaction) => {
   let amount = parseFloat(transaction.amount);
@@ -50,4 +67,8 @@ const removeTransaction = (index) => {
     data.value.splice(index, 1);
   }
 };
+
+const clearStorage = () => {
+  localStorage.clear();
+}
 </script>
