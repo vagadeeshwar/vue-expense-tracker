@@ -16,10 +16,8 @@ import { ref } from 'vue'
 import 'vue-toast-notification/dist/theme-sugar.css';
 import { useToast } from 'vue-toast-notification';
 
-const text = ref(""), amount = ref("")
-let id = 0
-const $toast = useToast()
-const instance = $toast
+const text = ref(""), amount = ref(""), id = ref(0)
+const instance = useToast()
 const emit = defineEmits(['newTransaction'])
 
 const props = defineProps({
@@ -51,7 +49,7 @@ const addTransaction = () => {
         });
     }
     else {
-        emit('newTransaction', { id: id++, text: text.value, amount: amount.value })
+        emit('newTransaction', { id: id.value++, text: text.value, amount: amount.value })
         instance.success('Your expense  was succesfully added!', {
             position: "top-right"
         });

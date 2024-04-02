@@ -3,15 +3,10 @@
         <h3>History</h3>
         <ul>
             <template v-for="({ id, text, amount }, index) in data" :key="id">
-                <li v-if="amount >= 0" class="list-item" :class="{ 'income': amount >= 0 }">
-                    <div class="x_btn" @click="() => { emit('removeTransaction', index) }">x</div>
+                <li class="list-item" :class="{ 'income': amount >= 0, 'expense': amount < 0 }">
+                    <div class="x_btn" @click="() => emit('removeTransaction', index)">x</div>
                     {{ text }}
-                    <span>+${{ amount }}</span>
-                </li>
-                <li v-else class="list-item" :class="{ 'expense': amount < 0 }">
-                    <div class="x_btn">x</div>
-                    {{ text }}
-                    <span>-${{ -amount }}</span>
+                    <span>{{ amount >= 0 ? '+' : '-' }}${{ Math.abs(amount) }}</span>
                 </li>
             </template>
         </ul>

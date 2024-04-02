@@ -16,8 +16,11 @@ const Balance = defineAsyncComponent(() => import('./components/Balance.vue'));
 const AddTransaction = defineAsyncComponent(() => import('./components/AddTransaction.vue'));
 const IncomeExpenses = defineAsyncComponent(() => import('./components/IncomeExpenses.vue'));
 const TransactionList = defineAsyncComponent(() => import('./components/TransactionList.vue'));
+import 'vue-toast-notification/dist/theme-sugar.css';
+import { useToast } from 'vue-toast-notification';
 
 const data = ref([]), balance = ref(0), income = ref(0), expense = ref(0);
+const instance=useToast()
 
 const addTransaction = (transaction) => {
   let amount = parseFloat(transaction.amount);
@@ -28,10 +31,23 @@ const addTransaction = (transaction) => {
 }
 
 const removeTransaction = (index) => {
-  console.log("hello")
-  balance.value -= data.value[index].amount
-  if (data.value[index].amount > 0) income.value -= data.value[index].amount
-  else expense.value -= data.value[index].amount
-  data.value.splice(index, 1)
-}
+  const amount = data.value[index].amount;
+
+  if (amount >= 0 && income.value - amount < -expense.value) {
+    instance.error("Income can't be lower than expense!", {
+      position: "top-right"
+    });
+    instance.info("Try removing Expenses first!", {
+      position: "top-right"
+    });
+  } else {
+    balance.value -= amount;
+    if (amount >= 0) {
+      income.value -= amount;
+    } else {
+      expense.value -= amount;
+    }
+    data.value.splice(index, 1);
+  }
+};
 </script>
