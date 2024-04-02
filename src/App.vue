@@ -3,8 +3,8 @@
     <Header />
     <Balance :balance />
     <IncomeExpenses :income :expense />
-    <TransactionList :data />
-    <AddTransaction @newTransaction="addTransaction" :balance/>
+    <TransactionList :data @removeTransaction="removeTransaction" />
+    <AddTransaction @newTransaction="addTransaction" :balance />
   </div>
 </template>
 
@@ -25,6 +25,13 @@ const addTransaction = (transaction) => {
   balance.value += amount;
   if (amount >= 0) income.value += amount;
   else expense.value += amount;
+}
 
+const removeTransaction = (index) => {
+  console.log("hello")
+  balance.value -= data.value[index].amount
+  if (data.value[index].amount > 0) income.value -= data.value[index].amount
+  else expense.value -= data.value[index].amount
+  data.value.splice(index, 1)
 }
 </script>
