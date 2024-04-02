@@ -13,8 +13,8 @@
 
 <script setup>
 
-defineProps({
-    income: Number,
-    expense: Number
+const props = defineProps({
+    income: { type: Number, required: true },
+    expense: { type: Number, required: true }
 })
 </script>

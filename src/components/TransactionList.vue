@@ -15,7 +15,7 @@
 </template>
 
 <script setup>
-defineProps({
-    data: Array
+const props = defineProps({
+    data: { type: Array, required: true }
 })
 </script>

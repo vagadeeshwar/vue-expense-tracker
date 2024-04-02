@@ -7,8 +7,8 @@
 
 <script setup>
 
-defineProps({
-    balance: Number
+const props = defineProps({
+    balance: { type: Number, required: true }
 })
 
 </script>

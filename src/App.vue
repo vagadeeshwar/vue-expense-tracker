@@ -1,10 +1,10 @@
 <template>
   <div>
     <Header />
-    <Balance :balance="balance" />
-    <IncomeExpenses :income="income" :expense="expense" />
-    <TransactionList :data="data" />
-    <AddTransaction @newTransaction="addTransaction" />
+    <Balance :balance />
+    <IncomeExpenses :income :expense />
+    <TransactionList :data />
+    <AddTransaction @newTransaction="addTransaction" :balance/>
   </div>
 </template>
 
