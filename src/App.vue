@@ -74,16 +74,14 @@ const clearStorage = () => {
 </script>
 
 <style scoped>
-body {
-  background-color: #f7f7f7;
-}
-
 .container {
   max-width: 400px;
   margin: 30px auto;
-  padding: 20px;
+  padding: 32px;
   background-color: #fff;
   border-radius: 5px;
   box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+  outline: 2px solid black;
+  row-gap: 8px;
 }
 </style>

@@ -14,3 +14,9 @@ const props = defineProps({
 })
 
 </script>
+
+<style scoped>
+.mb-2 {
+    font-size: medium;
+}
+</style>

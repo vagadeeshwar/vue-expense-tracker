@@ -19,3 +19,11 @@ const props = defineProps({
     expense: { type: Number, required: true }
 })
 </script>
+
+<style scoped>
+.text-success,
+.text-danger {
+    font-weight: 600;
+    font-size: 1.2rem;
+}
+</style>

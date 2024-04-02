@@ -1,7 +1,7 @@
 <template>
 
     <div>
-        <h3 class="mb-3">Add new Transaction</h3>
+        <h3>Add new Transaction</h3>
         <form action="" id="form">
             <div class="mb-3"> <label for="text" class="form-label">Text</label> <input type="text" class="form-control"
                     placeholder="Enter text..." id="text" v-model.trim="text" required> </div>
@@ -66,5 +66,8 @@ const addTransaction = () => {
 <style scoped>
 h3 {
     text-transform: uppercase;
+    margin-top: 8px;
+    font-size: medium;
+    font-weight: 600;
 }
 </style>

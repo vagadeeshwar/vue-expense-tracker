@@ -1,6 +1,8 @@
+@import "bootstrap/scss/bootstrap";
+
 body {
     /* font-family: ; */
-    /* background: ; */
+    background-color: rgb(134, 73, 73);
     /* color: ; */
     line-height: 1.5;
     /* letter-spacing: ; */
@@ -76,5 +78,3 @@ select {
 Variables
 ===============
 */
-
-@import "bootstrap/scss/bootstrap";
