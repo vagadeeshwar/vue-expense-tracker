@@ -1,12 +1,13 @@
 <template>
-    <div>
-        <div>
-            <div>Income</div>
-            <div style="color:green">+${{ income }}</div>
+
+    <div class="d-flex justify-content-between">
+        <div class="text-center">
+            <div class="fw-bold">Income</div>
+            <div class="text-success">+${{ income }}</div>
         </div>
-        <div>
-            <div>Expense</div>
-            <div style="color: red;">-${{ -expense }}</div>
+        <div class="text-center">
+            <div class="fw-bold">Expense</div>
+            <div class="text-danger">-${{ -expense }}</div>
         </div>
     </div>
 </template>

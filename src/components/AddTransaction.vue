@@ -1,12 +1,14 @@
 <template>
+
     <div>
-        <h3>Add new Transaction</h3>
+        <h3 class="mb-3">Add new Transaction</h3>
         <form action="" id="form">
-            <label for="text">Text</label>
-            <input type="text" placeholder="Enter text..." id="text" v-model.trim="text" required>
-            <label for="amount">Amount<div> (negative - expense, positive - income)</div></label>
-            <input type="text" placeholder="Enter amount..." id="amount" v-model.number="amount" required>
-            <button @click.prevent="addTransaction">Add Transaction</button>
+            <div class="mb-3"> <label for="text" class="form-label">Text</label> <input type="text" class="form-control"
+                    placeholder="Enter text..." id="text" v-model.trim="text" required> </div>
+            <div class="mb-3"> <label for="amount" class="form-label">Amount <div class="form-text">(negative - expense,
+                        positive - income)</div> </label> <input type="text" class="form-control"
+                    placeholder="Enter amount..." id="amount" v-model.number="amount" required> </div> <button
+                class="btn btn-primary" @click.prevent="addTransaction">Add Transaction</button>
         </form>
     </div>
 </template>
@@ -61,3 +63,8 @@ const addTransaction = () => {
     amount.value = ""
 }
 </script>
+<style scoped>
+h3 {
+    text-transform: uppercase;
+}
+</style>

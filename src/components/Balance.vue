@@ -1,7 +1,9 @@
 <template>
-    <div>
-        <h3>your balance</h3>
-        <div>{{ balance >= 0 ? `+$${balance}` : `-$${-balance}` }}</div>
+
+    <div class="my-4">
+        <h3 class="text-uppercase mb-2">Your Balance</h3>
+        <div class="fs-3" :class="{ 'text-success': balance >= 0, 'text-danger': balance < 0 }"> {{ balance >= 0 ?
+            `+$${balance}` : `-$${-balance}` }} </div>
     </div>
 </template>
 

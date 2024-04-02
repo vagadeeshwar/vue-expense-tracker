@@ -1,12 +1,12 @@
 <template>
     <div>
-        <h3>History</h3>
-        <ul>
-            <template v-for="({ id, text, amount }, index) in data" :key="id">
-                <li class="list-item" :class="{ 'income': amount >= 0, 'expense': amount < 0 }">
-                    <div class="x_btn" @click="emit('removeTransaction', index)">x</div>
-                    {{ text }}
-                    <span>{{ amount >= 0 ? '+' : '-' }}${{ Math.abs(amount) }}</span>
+        <h3 class="mb-3">History</h3>
+        <ul class="list-unstyled"> <template v-for="({ id, text, amount }, index) in data" :key="id">
+                <li class="list-item py-2"
+                    :class="{ 'border-end border-success border-3': amount >= 0, 'border-end border-danger border-3': amount < 0 }">
+                    <div class="x_btn" @click="emit('removeTransaction', index)"> <i class="fas fa-times"></i> </div>
+                    <span class="me-2">{{ text }}</span> <span>{{ amount >= 0 ? '+' : '-' }}${{ Math.abs(amount)
+                        }}</span>
                 </li>
             </template>
         </ul>
@@ -35,7 +35,7 @@ const props = defineProps({
     left: -20px;
     width: 16px;
     height: 16px;
-    background-color: red;
+    background-color: #dc3545;
     color: white;
     display: flex;
     justify-content: center;
@@ -47,13 +47,5 @@ const props = defineProps({
 
 .list-item:hover .x_btn {
     opacity: 1;
-}
-
-.income span {
-    border-right: 2px solid green;
-}
-
-.expense span {
-    border-right: 2px solid red;
 }
 </style>
